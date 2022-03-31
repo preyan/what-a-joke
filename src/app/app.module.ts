@@ -1,36 +1,26 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AboutModule } from './about/about.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ContactModule } from './contact/contact.module';
-import { FooterModule } from './footer/footer.module';
-import { HeaderModule } from './header/header.module';
-import { HomepageModule } from './homepage/homepage.module';
-import { LoginModule } from './login/login.module';
-import { PagenotfoundModule } from './pagenotfound/pagenotfound.module';
-import { RegistrationModule } from './registration/registration.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
+import { PageNotFoundModule } from './components/page-not-found/page-not-found.module';
+import { HeaderModule } from './components/header/header.module';
+import { FooterModule } from './components/footer/footer.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PageNotFoundModule,
     HeaderModule,
     FooterModule,
-    AboutModule,
-    ContactModule,
-    HomepageModule,
-    LoginModule,
-    RegistrationModule,
-    PagenotfoundModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

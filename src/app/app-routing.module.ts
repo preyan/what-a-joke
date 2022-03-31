@@ -1,65 +1,60 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AboutComponent } from './components/about/about.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
+import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 const routes: Routes = [
   {
+    path: 'dashboard',
+    component: DashboardComponent
+  },
+  {
+    path: 'page-not-found',
+    component: PageNotFoundComponent
+  },
+  {
     path: 'login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
+    component: LoginComponent
   },
   {
     path: 'register',
-    loadChildren: () =>
-      import('./registration/registration.module').then(
-        (m) => m.RegistrationModule
-      ),
-  },
-  {
-    path: 'home',
-    loadChildren: () =>
-      import('./homepage/homepage.module').then((m) => m.HomepageModule),
-  },
-
-  {
-    path: 'error404',
-    loadChildren: () =>
-      import('./pagenotfound/pagenotfound.module').then(
-        (m) => m.PagenotfoundModule
-      ),
-  },
-  {
-    path: 'header',
-    loadChildren: () =>
-      import('./header/header.module').then((m) => m.HeaderModule),
-  },
-  {
-    path: 'footer',
-    loadChildren: () =>
-      import('./footer/footer.module').then((m) => m.FooterModule),
-  },
-  {
-    path: 'contact',
-    loadChildren: () =>
-      import('./contact/contact.module').then((m) => m.ContactModule),
+    component: RegistrationComponent
   },
   {
     path: 'about',
-    loadChildren: () =>
-      import('./about/about.module').then((m) => m.AboutModule),
+    component: AboutComponent
+  },
+  {
+    path: 'contact',
+    component: ContactComponent
+  },
+  {
+    path: 'header',
+    component: HeaderComponent
+  },
+  {
+    path: 'footer',
+    component: FooterComponent
   },
   {
     path: '',
-    redirectTo: '/home',
-    pathMatch: 'full',
+    redirectTo: '/dashboard',
+    pathMatch: 'full'
   },
   {
     path: '**',
-    redirectTo: 'error404',
-  },
+    redirectTo: 'page-not-found'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
